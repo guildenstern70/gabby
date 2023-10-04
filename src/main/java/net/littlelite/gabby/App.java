@@ -8,13 +8,15 @@
 package net.littlelite.gabby;
 
 /**
- * Hello world!
- *
+ * Gabby example of usage
  */
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        IGabby gabby = GabbyFactory.create();
+        System.out.println("**************************************************");
+        System.out.println( gabby.generate() );
+        System.out.println("**************************************************");
     }
 }

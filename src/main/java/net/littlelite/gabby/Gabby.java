@@ -7,13 +7,22 @@
 
 package net.littlelite.gabby;
 
+import net.littlelite.gabby.utils.RandomReader;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+
 class Gabby implements IGabby
 {
-    private final String[] words;
+    private final RandomReader randomReader;
 
-    public Gabby(String[] words)
+    public Gabby()
     {
-        this.words = words;
+        Path nouns = Paths.get("src/main/resources/nouns.txt");
+        Path adjectives = Paths.get("src/main/resources/adjectives.txt");
+        Path verbs = Paths.get("src/main/resources/verbs.txt");
+        this.randomReader = new RandomReader(nouns, adjectives, verbs);
     }
 
     public String generate()
@@ -23,12 +32,13 @@ class Gabby implements IGabby
 
     public String generate(int numberOfWords)
     {
-        StringBuilder sb = new StringBuilder();
+        ArrayList<String> phrase = new ArrayList<>();
         for (int i = 0; i < numberOfWords; i++)
         {
-            sb.append(this.words[(int) (Math.random() * this.words.length)]);
-            sb.append(" ");
+            phrase.add(this.randomReader.getRandomAdjective());
+            phrase.add(this.randomReader.getRandomNoun());
+            phrase.add(this.randomReader.getRandomVerb());
         }
-        return sb.toString();
+        return String.join(" ", phrase);
     }
 }
