@@ -13,16 +13,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class AppTest
 {
-
-    private final String[] words = new String[] {"the", "great", "api", "is", "the", "best"};
-
-    private final Gabby gabby = new Gabby(words);
+    private final IGabby gabby = GabbyFactory.create();
 
     @Test
     void generate()
     {
         String phrase = this.gabby.generate();
-        assertThat("the").isIn(phrase.split(" "));
+        assertThat(phrase.length()).isGreaterThan(0);
     }
 }
 
