@@ -7,21 +7,24 @@
 
 package net.littlelite.gabby;
 
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
+class AppTest
 {
-    /**
-     * Rigorous Test :-)
-     */
+
+    private final String[] words = new String[] {"the", "great", "api", "is", "the", "best"};
+
+    private final Gabby gabby = new Gabby(words);
+
     @Test
-    public void shouldAnswerWithTrue()
+    void generate()
     {
-        assertTrue( true );
+        String phrase = this.gabby.generate();
+        assertThat("the").isIn(phrase.split(" "));
     }
 }
+
+
+
