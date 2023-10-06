@@ -15,11 +15,4 @@ public interface IGabby
      */
     String generate();
 
-    /**
-     * Generates a gabby phrase with a given number of words
-     * @param numberOfWords number of words
-     * @return a gabby phrase
-     */
-    String generate(int numberOfWords);
-
 }

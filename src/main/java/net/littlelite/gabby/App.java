@@ -16,7 +16,10 @@ public class App
     {
         IGabby gabby = GabbyFactory.create();
         System.out.println("**************************************************");
-        System.out.println( gabby.generate() );
+        for (int i = 0; i < 10; i++)
+        {
+            System.out.println(" > " + gabby.generate() );
+        }
         System.out.println("**************************************************");
     }
 }
